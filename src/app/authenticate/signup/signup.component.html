@@ -1,0 +1,39 @@
+<div class="main-container">
+   <div class="div-conatiner">
+    <div class="content-div">
+        <h3>SIGN UP</h3>
+          <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+        <div class="form-field">
+            <label for="email">Email</label><br>
+            <input type="text" [(ngModel)]="signup.email" required name="email" id="email">
+        </div>
+        <div class="form-field">
+            <label for="password">Password</label><br>
+            <div class="password-input">
+          
+            <input [type]="passwordtype" [(ngModel)]="signup.password" required name="password" id="password">
+            <div class="icon">
+                <ng-container  *ngIf="seePasswordStatus;else lock" >
+                    <span class="material-symbols-outlined" (click)="seePassword()">
+                        water_lock
+                        </span>
+                </ng-container>
+                <ng-template #lock> 
+                    <span class="material-symbols-outlined" (click)="hidePassword()">
+                        lock_open_right
+                        </span>
+                </ng-template>
+                
+            </div>
+        </div>
+            
+        </div>
+        <div class="form-field">
+            <input type="submit" [disabled]="signupForm.invalid" value="SIGN UP" class="btn">
+        </div>
+     </form>
+       
+    </div>
+     
+   </div>
+</div>
